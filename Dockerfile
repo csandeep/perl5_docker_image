@@ -1,7 +1,7 @@
 FROM alpine:3.6
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg
+RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev
 
 RUN mkdir -p /usr/src/perl
 
@@ -40,5 +40,3 @@ RUN cpanm Digest::SHA Module::Signature && rm -rf ~/.cpanm
 ENV PERL_CPANM_OPT $PERL_CPANM_OPT --verify
 
 WORKDIR /
-
-CMD perl -V && cpanm -V
