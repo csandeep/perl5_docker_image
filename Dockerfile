@@ -1,7 +1,7 @@
 FROM alpine:3.6
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev
+RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev openssl openssl-dev
 
 RUN mkdir -p /usr/src/perl
 
