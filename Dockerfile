@@ -1,7 +1,7 @@
 FROM alpine:3.6
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev mariadb-dev mariadb-client mariadb-libs mysql-client bash
+RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev libressl libressl-dev mariadb-dev mariadb-client mariadb-libs mysql-client bash
 
 RUN mkdir -p /usr/src/perl
 
