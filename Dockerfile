@@ -1,7 +1,7 @@
-FROM alpine:3.6
+FROM node:latest
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apk update && apk upgrade && apk add curl tar make gcc build-base wget gnupg libev libev-dev libressl libressl-dev mariadb-dev mariadb-client mariadb-libs mysql-client bash nodejs-npm nodejs
+RUN apt-get update && apt-get install -y mariadb-client  mariadb-common mysql-client
 
 RUN mkdir -p /usr/src/perl
 
@@ -27,12 +27,15 @@ RUN curl -SLO http://www.cpan.org/src/5.0/perl-5.26.1.tar.gz \
     && make -j$(nproc) \
     && TEST_JOBS=$(nproc) true make test_harness \
     && make install \
+    && rm /usr/bin/perl \
+    && rm /usr/local/bin/perl \
+    && ln -s /usr/local/bin/perl5.26.1 /usr/bin/perl \
+    && ln -s /usr/local/bin/perl5.26.1 /usr/local/bin/perl
     && curl -LO https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
     && chmod +x cpanm \
     && ./cpanm App::cpanminus \
 	&& ./cpanm Carton \
     && rm -fr ./cpanm /root/.cpanm /usr/src/perl \
-	&& rm -rf /var/cache/apk/*
 
 ## from tianon/perl
 ENV PERL_CPANM_OPT --verbose --mirror https://cpan.metacpan.org --mirror-only
