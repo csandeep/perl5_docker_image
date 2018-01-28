@@ -1,7 +1,7 @@
 FROM node:latest
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apt-get update && apt-get install -y mariadb-client  mariadb-common && apt-get install -y mysql-client
+RUN apt-get update && apt-get install -y mariadb-client  mariadb-common unzip && apt-get install -y mysql-client
 
 RUN mkdir -p /usr/src/perl
 
