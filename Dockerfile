@@ -1,7 +1,7 @@
 FROM node:latest
 MAINTAINER csandeep <csandeep@gmail.com>
 
-RUN apt-get update && apt-get install -y mariadb-client  mariadb-common mysql-client
+RUN apt-get update && apt-get install -y mariadb-client  mariadb-common && apt-get install -y mysql-client
 
 RUN mkdir -p /usr/src/perl
 
@@ -30,12 +30,12 @@ RUN curl -SLO http://www.cpan.org/src/5.0/perl-5.26.1.tar.gz \
     && rm /usr/bin/perl \
     && rm /usr/local/bin/perl \
     && ln -s /usr/local/bin/perl5.26.1 /usr/bin/perl \
-    && ln -s /usr/local/bin/perl5.26.1 /usr/local/bin/perl
+    && ln -s /usr/local/bin/perl5.26.1 /usr/local/bin/perl \
     && curl -LO https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
     && chmod +x cpanm \
     && ./cpanm App::cpanminus \
 	&& ./cpanm Carton \
-    && rm -fr ./cpanm /root/.cpanm /usr/src/perl \
+    && rm -fr ./cpanm /root/.cpanm /usr/src/perl
 
 ## from tianon/perl
 ENV PERL_CPANM_OPT --verbose --mirror https://cpan.metacpan.org --mirror-only
