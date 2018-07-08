@@ -1,4 +1,4 @@
-## Perl 5.26.1 / Carton / cpanm / Alpine Docker image
+## Perl 5.28.0 / Carton / cpanm / Alpine Docker image
 
 
 Pull the docker container using:
