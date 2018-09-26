@@ -5,7 +5,7 @@ Pull the docker container using:
 
     docker pull csandeep/perl5_docker_image
 
-Assuming you are using [Mojolicious](http://mojolicious.org/) framework:
+Asuming you are using [Mojolicious](http://mojolicious.org/) framework:
 
 Here's a sample **Dockerfile** to get you started:
 
